@@ -1,0 +1,247 @@
+<view class="navbar">
+  <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}</text>
+</view>
+<!-- <view class='bottom-navbar'></view> -->
+ 
+<!--国内-->
+<view hidden="{{currentTab!==0}}">
+  <view class="news-content" bindtap='onTapNewsDetail' id='{{head_id}}'>
+    <view class='pic'>
+      <image class='headpic' src='{{head_firstImage}}' mode='scaleToFill'></image>
+    </view>
+    <view class='box'>
+    <view class='bg'>
+    <view class="headEassy-text">{{head_title}}</view>
+    <view class="sourceAndTime">
+        <view class="headEassy-source" wx:if="{{head_source==''}}">未知来源</view>
+        <view class="headEassy-source" wx:elif="{{head_source!=''}}">{{head_source}}</view>
+        <view class="headEassy-time">{{head_date}}</view>
+    </view>
+    </view>
+    </view>
+  </view>
+  
+  <view class='article' wx:for-items='{{essay}}' wx:key='eassay' wx:if='{{index>0}}'>
+    <view class="essay"  bindtap='onTapNewsDetail' id='{{item.id}}'>
+      <view class='essay-textsource'>
+        <view class="essay-title">{{item.title}}</view>
+        <view class="sourceAndTime">
+          <view class="essay-source" wx:if="{{item.source==''}}">未知来源</view>
+          <view class="essay-source">{{item.source}}</view>
+          <view class="essay-time">{{item.date}}</view>
+        </view>
+      </view>
+      <image class='essay-picture' src='{{item.firstImage}}'></image>
+    </view>
+    <view class='devline'></view>
+  </view>
+</view>
+ 
+<!--国际-->
+<view hidden="{{currentTab!==1}}">
+  <view class="news-content" bindtap='onTapNewsDetail' id='{{head_id}}'>
+    <view class='pic'>
+      <image class='headpic' src='{{head_firstImage}}' mode='scaleToFill'></image>
+    </view>
+    <view class='box'>
+    <view class='bg'>
+    <view class="headEassy-text">{{head_title}}</view>
+    <view class="sourceAndTime">
+        <view class="headEassy-source" wx:if="{{head_source==''}}">未知来源</view>
+        <view class="headEassy-source" wx:elif="{{head_source!=''}}">{{head_source}}</view>
+        <view class="headEassy-time">{{head_date}}</view>
+    </view>
+    </view>
+    </view>
+  </view>
+  
+  <view class='article' wx:for-items='{{essay}}' wx:key='eassay' wx:if='{{index>0}}'>
+    <view class="essay"  bindtap='onTapNewsDetail' id='{{item.id}}'>
+      <view class='essay-textsource'>
+        <view class="essay-title">{{item.title}}</view>
+        <view class="sourceAndTime">
+          <view class="essay-source" wx:if="{{item.source==''}}">未知来源</view>
+          <view class="essay-source">{{item.source}}</view>
+          <view class="essay-time">{{item.date}}</view>
+        </view>
+      </view>
+      <image class='essay-picture' src='{{item.firstImage}}'></image>
+    </view>
+    <view class='devline'></view>
+  </view>
+</view>
+ 
+<!--财经-->
+<view hidden="{{currentTab!==2}}">
+  <view class="news-content" bindtap='onTapNewsDetail' id='{{head_id}}'>
+    <view class='pic'>
+      <image class='headpic' src='{{head_firstImage}}' mode='scaleToFill'></image>
+    </view>
+    <view class='box'>
+    <view class='bg'>
+    <view class="headEassy-text">{{head_title}}</view>
+    <view class="sourceAndTime">
+        <view class="headEassy-source" wx:if="{{head_source==''}}">未知来源</view>
+        <view class="headEassy-source" wx:elif="{{head_source!=''}}">{{head_source}}</view>
+        <view class="headEassy-time">{{head_date}}</view>
+    </view>
+    </view>
+    </view>
+  </view>
+  
+  <view class='article' wx:for-items='{{essay}}' wx:key='eassay' wx:if='{{index>0}}'>
+    <view class="essay"  bindtap='onTapNewsDetail' id='{{item.id}}'>
+      <view class='essay-textsource'>
+        <view class="essay-title">{{item.title}}</view>
+        <view class="sourceAndTime">
+          <view class="essay-source" wx:if="{{item.source==''}}">未知来源</view>
+          <view class="essay-source">{{item.source}}</view>
+          <view class="essay-time">{{item.date}}</view>
+        </view>
+      </view>
+      <image class='essay-picture' src='{{item.firstImage}}'></image>
+    </view>
+    <view class='devline'></view>
+  </view>
+</view>
+
+<!-- ------- -->
+
+
+
+
+<!--娱乐-->
+<view hidden="{{currentTab!==3}}">
+  <view class="news-content" bindtap='onTapNewsDetail' id='{{head_id}}'>
+    <view class='pic'>
+      <image class='headpic' src='{{head_firstImage}}' mode='scaleToFill'></image>
+    </view>
+    <view class='box'>
+    <view class='bg'>
+    <view class="headEassy-text">{{head_title}}</view>
+    <view class="sourceAndTime">
+        <view class="headEassy-source" wx:if="{{head_source==''}}">未知来源</view>
+        <view class="headEassy-source" wx:elif="{{head_source!=''}}">{{head_source}}</view>
+        <view class="headEassy-time">{{head_date}}</view>
+    </view>
+    </view>
+    </view>
+  </view>
+  
+  <view class='article' wx:for-items='{{essay}}' wx:key='eassay' wx:if='{{index>0}}'>
+    <view class="essay"  bindtap='onTapNewsDetail' id='{{item.id}}'>
+      <view class='essay-textsource'>
+        <view class="essay-title">{{item.title}}</view>
+        <view class="sourceAndTime">
+          <view class="essay-source" wx:if="{{item.source==''}}">未知来源</view>
+          <view class="essay-source">{{item.source}}</view>
+          <view class="essay-time">{{item.date}}</view>
+        </view>
+      </view>
+      <image class='essay-picture' src='{{item.firstImage}}'></image>
+    </view>
+    <view class='devline'></view>
+  </view>
+</view>
+ 
+<!--军事-->
+<view hidden="{{currentTab!==4}}">
+  <view class="news-content" bindtap='onTapNewsDetail' id='{{head_id}}'>
+    <view class='pic'>
+      <image class='headpic' src='{{head_firstImage}}' mode='scaleToFill'></image>
+    </view>
+    <view class='box'>
+    <view class='bg'>
+    <view class="headEassy-text">{{head_title}}</view>
+    <view class="sourceAndTime">
+        <view class="headEassy-source" wx:if="{{head_source==''}}">未知来源</view>
+        <view class="headEassy-source" wx:elif="{{head_source!=''}}">{{head_source}}</view>
+        <view class="headEassy-time">{{head_date}}</view>
+    </view>
+    </view>
+    </view>
+  </view>
+  
+  <view class='article' wx:for-items='{{essay}}' wx:key='eassay' wx:if='{{index>0}}'>
+    <view class="essay"  bindtap='onTapNewsDetail' id='{{item.id}}'>
+      <view class='essay-textsource'>
+        <view class="essay-title">{{item.title}}</view>
+        <view class="sourceAndTime">
+          <view class="essay-source" wx:if="{{item.source==''}}">未知来源</view>
+          <view class="essay-source">{{item.source}}</view>
+          <view class="essay-time">{{item.date}}</view>
+        </view>
+      </view>
+      <image class='essay-picture' src='{{item.firstImage}}'></image>
+    </view>
+    <view class='devline'></view>
+  </view>
+</view>
+ 
+<!--体育-->
+<view hidden="{{currentTab!==5}}">
+  <view class="news-content" bindtap='onTapNewsDetail' id='{{head_id}}'>
+    <view class='pic'>
+      <image class='headpic' src='{{head_firstImage}}' mode='scaleToFill'></image>
+    </view>
+    <view class='box'>
+    <view class='bg'>
+    <view class="headEassy-text">{{head_title}}</view>
+    <view class="sourceAndTime">
+        <view class="headEassy-source" wx:if="{{head_source==''}}">未知来源</view>
+        <view class="headEassy-source" wx:elif="{{head_source!=''}}">{{head_source}}</view>
+        <view class="headEassy-time">{{head_date}}</view>
+    </view>
+    </view>
+    </view>
+  </view>
+  
+  <view class='article' wx:for-items='{{essay}}' wx:key='eassay' wx:if='{{index>0}}'>
+    <view class="essay"  bindtap='onTapNewsDetail' id='{{item.id}}'>
+      <view class='essay-textsource'>
+        <view class="essay-title">{{item.title}}</view>
+        <view class="sourceAndTime">
+          <view class="essay-source" wx:if="{{item.source==''}}">未知来源</view>
+          <view class="essay-source">{{item.source}}</view>
+          <view class="essay-time">{{item.date}}</view>
+        </view>
+      </view>
+      <image class='essay-picture' src='{{item.firstImage}}'></image>
+    </view>
+    <view class='devline'></view>
+  </view>
+</view>
+
+<!-- 其他 -->
+<view hidden="{{currentTab!==6}}">
+  <view class="news-content" bindtap='onTapNewsDetail' id='{{head_id}}'>
+    <view class='pic'>
+      <image class='headpic' src='{{head_firstImage}}' mode='scaleToFill'></image>
+    </view>
+    <view class='box'>
+    <view class='bg'>
+    <view class="headEassy-text">{{head_title}}</view>
+    <view class="sourceAndTime">
+        <view class="headEassy-source" wx:if="{{head_source==''}}">未知来源</view>
+        <view class="headEassy-source" wx:elif="{{head_source!=''}}">{{head_source}}</view>
+        <view class="headEassy-time">{{head_date}}</view>
+    </view>
+    </view>
+    </view>
+  </view>
+  
+  <view class='article' wx:for-items='{{essay}}' wx:key='eassay' wx:if='{{index>0}}'>
+    <view class="essay"  bindtap='onTapNewsDetail' id='{{item.id}}'>
+      <view class='essay-textsource'>
+        <view class="essay-title">{{item.title}}</view>
+        <view class="sourceAndTime">
+          <view class="essay-source" wx:if="{{item.source==''}}">未知来源</view>
+          <view class="essay-source">{{item.source}}</view>
+          <view class="essay-time">{{item.date}}</view>
+        </view>
+      </view>
+      <image class='essay-picture' src='{{item.firstImage}}'></image>
+    </view>
+    <view class='devline'></view>
+  </view>
+</view>

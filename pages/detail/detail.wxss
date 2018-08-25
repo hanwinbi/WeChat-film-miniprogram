@@ -1,0 +1,68 @@
+
+.articleDetails{
+  padding-top: 35rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+}
+
+.title{
+  font-size: 54rpx;
+  line-height: 63rpx;
+  font-weight: 320;
+}
+
+.info{
+  display: flex;
+  padding-top: 35rpx;
+  font-size: 35rpx;
+  line-height: 49rpx;
+  color: rgb(192, 190, 190);
+}
+
+.source{
+  display: flex;
+  flex-direction: column;
+}
+
+.articleDate{
+  display: flex;
+  padding-left: 30rpx;
+  flex-direction: column;
+}
+
+.readCount{
+  display: flex;
+  padding-left: 200rpx;
+  flex-direction: column;
+}
+
+.contentDetail{
+  padding-top: 40rpx;
+  text-align: left;
+}
+
+.paragraph{
+  font-size: 35rpx;
+}
+
+.picture{
+  width: 100%;
+}
+
+.devline{
+  margin: 20rpx 0rpx 0rpx;
+  width: 100%;
+  background-color: gainsboro;
+  height: 5rpx;
+  opacity: 0.5;
+}
+
+.end{
+  text-align: center;
+  font-size: 25rpx;
+  line-height: 35rpx;
+  opacity: 0.2;
+}
+.blank{
+  padding-top: 20rpx;
+}

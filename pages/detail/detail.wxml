@@ -1,0 +1,18 @@
+<view class='articleDetails'>
+  <view class='title'>{{title}}</view>
+  <scroll-view scroll-x="true">
+    <view class='info'>
+      <view class="source" wx:if="{{source==''}}">未知来源</view>
+      <view class="source" wx:elif="{{source!=''}}">{{source}}</view>
+      <view class='articleDate'>{{date}}</view>
+      <view class='readCount'>阅读 {{readCount}}</view>
+    </view>
+  </scroll-view>
+  <view class='contentDetail' wx:for-items='{{content}}' wx:key='content'>
+    <view class='paragraph' wx:if="{{item.text!=''}}">{{item.text}}</view>
+    <image class='picture' wx:if="{{item.src!=''}}" src='{{item.src}}'></image>
+  </view>
+  <view class='devline'></view>
+  <view class='end'>End</view>
+  <view class='blank'></view>
+</view>
