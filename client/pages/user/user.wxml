@@ -1,0 +1,48 @@
+<view wx:if="{{!userInfo}}">
+  <view class="unlogin-card">
+    <view class="unlogin-head"></view>
+    <view class="unlogin-info">
+      <view class="unlogin-text">未登录</view>
+      <view class="unlogin-tips">点击微信登录后可查看收藏影评</view>
+    </view>
+  </view>
+
+  <button wx:if="{{loginState==0}}" class="unlogin-btn" open-type='getUserInfo' bindgetuserinfo='onTapLogin'>微信登录</button>
+</view>
+
+<view class='user' wx:else>
+  <view class='select_box'>
+    <view class='select' catchtap='selectTap'>
+      <text class='select_text'>{{selectData[index]}} V</text>
+    </view>
+    <view class='option_box' style='height:{{show?(selectData.length>5?300:selectData.length*60):0}}rpx;'>
+      <text class='option' style='{{index==selectData.length-2&&"border:0;"}}' wx:for='{{selectData}}' wx:key='this' data-index='{{index}}' catchtap='optionTap'>{{item}}</text>
+    </view>
+  </view>
+  <view class='for-block' wx:for-items='{{favorites}}' wx:key='favorite'>
+    <view class='comments' bindtap='toCommentDetail' data-item='{{item}}'>
+      <image class='poster' src='{{item.poster}}'></image>
+      <view class='comment'>
+        <view class='film-name'>{{item.title}}</view>
+        <view class='comment-contant' wx:if='{{item.commenttype==0}}'>{{item.comment}}</view>
+        <view class='comment-contant' wx:else>
+          <view class='playButton'>
+            <image class='button-icon' src='/images/play.png'></image>
+            <view class='button-text'>音频</view>
+          </view>
+        </view>
+        <view class='userInfo'>
+          <image class='avatar' src='{{item.avatar}}'></image>
+          <view class='username'>{{item.comment_username}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='devline'></view>
+
+<view class='blank'></view>
+
+<view class='bottom-button' bindtap='toHome'>
+  <view class='home-text'>回到首页</view>
+</view>

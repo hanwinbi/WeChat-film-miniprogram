@@ -1,0 +1,94 @@
+.commentlist{
+  padding-top: 40rpx;
+}
+
+.comment{
+  height: 200rpx;
+  display: flex;
+  flex-direction: column;
+  padding-left: 60rpx;
+  margin-top: 10rpx;
+  background: white
+}
+
+.userInfo{
+  display: flex;
+  flex-direction: row;
+  padding-top: 20rpx;
+}
+
+.avatar{
+  height: 80rpx;
+  width: 80rpx;
+  border-radius: 50%;
+}
+
+.username{
+  padding-top: 20rpx;
+  padding-left: 35rpx;
+  font-size: 35rpx;
+  line-height: 49rpx;
+}
+
+.commentContant{
+  margin: 0rpx 20rpx 20rpx 0rpx;
+  padding-top: 20rpx;
+  text-overflow:ellipsis;
+  overflow:hidden;
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp: 1; 
+  font-size: 30rpx;
+  line-height: 42rpx;
+}
+
+.bottom-button{
+  position: fixed;
+  bottom: 0;
+  width: 750rpx;
+  height: 100rpx;
+  background: white
+}
+
+.home-text{
+  padding-top: 25rpx;
+  text-align:center;
+  align-items:center;
+  justify-content: center;
+  font-size: 35rpx;
+  line-height: 49rpx;
+}
+
+.devline{
+  position: fixed;
+  width: 100%;
+  height: 2rpx;
+  bottom: 105rpx;
+  background: rgba(117, 117, 117, 0.103);
+  opacity: 0.2
+}
+
+.playButton{
+  margin: 0rpx 110rpx 0rpx;
+  height: 80rpx;
+  display: flex;
+  flex-direction: row;
+  border-radius: 5rpx;
+  background: white;
+  border: 2rpx solid rgba(161, 160, 160, 0.171);
+  background: rgba(211, 209, 198, 0.425)
+}
+
+.button-icon{
+  padding-left: 25rpx;
+  padding-top: 15rpx;
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.button-text{
+  font-size: 35rpx;
+  line-height: 49rpx;
+  padding-left: 8rpx;
+  padding-top: 16rpx;
+}

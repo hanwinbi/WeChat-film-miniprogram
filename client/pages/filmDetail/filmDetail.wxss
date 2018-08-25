@@ -1,0 +1,66 @@
+.filmDetail{
+  margin: 150rpx 50rpx 0rpx;
+  box-shadow: 1rpx 1rpx 1rpx 1rpx rgba(177, 176, 176, 0.103);
+  background: white;
+}
+
+.poster{
+  position: absolute;
+  left: 235rpx;
+  top: 50rpx;
+  height: 350rpx;
+  width: 280rpx;
+}
+
+.filmname{
+  padding-top: 280rpx;
+  text-align:center;
+  align-items:center;
+  justify-content: center;
+  font-size: 40rpx;
+  line-height: 56rpx;
+  font-weight: 800
+}
+
+.comment{
+  margin: 20rpx 50rpx 0rpx;
+  font-size: 35rpx;
+  line-height: 49rpx;
+  opacity: 0.8
+}
+
+.tapbutton{
+  padding-bottom: 50rpx;
+  padding-top: 50rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.button{
+  margin: 0rpx 30rpx 0rpx;
+  width: 50%;
+  height: 80rpx;
+  display: flex;
+  flex-direction: row;
+  border-radius: 5rpx;
+  background: white;
+  border: 2rpx solid rgba(161, 160, 160, 0.171);
+}
+
+.button-icon{
+  padding-left: 25rpx;
+  padding-top: 15rpx;
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.button-text{
+  font-size: 35rpx;
+  line-height: 49rpx;
+  padding-left: 8rpx;
+  padding-top: 16rpx;
+}
+
+.blank{
+  height: 50rpx;
+}

@@ -1,0 +1,23 @@
+<view class='home'>
+  <image class='poster' src='{{poster}}' bindtap='tofilmDetail'></image>
+</view>
+
+<view class='film-name'>{{title}}</view>
+
+<view class='shareInfo' bindtap='toCommentDetail'>
+  <image class='avatar' src='{{avatar}}'></image>
+  <view class='share-text'>{{nickname}}给你推荐了一部电影</view>
+</view>
+
+<view class='devline'></view>
+
+<view class='button'>
+  <view class='button-left' bindtap='toPop'>
+    <image class='pop-icon' src='/images/hot.png'></image>
+    <view class='pop-text'>热门</view>
+  </view> 
+  <view class='button-right' bindtap='toUser'>
+    <image class='pop-icon' src='/images/mine.png'></image>
+    <view class='pop-text'>我的</view>
+  </view> 
+</view>

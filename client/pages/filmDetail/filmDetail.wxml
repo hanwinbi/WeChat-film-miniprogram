@@ -1,0 +1,23 @@
+<image class='poster' src='{{poster}}'></image>
+<view class='filmDetail'>
+  <view class='filmname'>{{title}}</view>
+  <view class='comment'>{{description}}</view>
+  <view class='tapbutton'>
+    <view class='button' bindtap='toComments' id='{{id}}'>
+      <image class='button-icon' src='/images/eye.png'></image>
+      <view class='button-text'>查看影评</view>
+    </view>
+
+    <view class='button' bindtap='actionSheetTap'>
+      <image class='button-icon' src='/images/comment.png' id='{{id}}'></image>
+      <view class='button-text'>添加影评</view>
+    </view>
+    <action-sheet hidden="{{actionSheetHidden}}" bindchange="actionSheetChange">
+      <block wx:for-items="{{actionSheetItems}}" wx:key='unique'>
+        <action-sheet-item class="item" bindtap="bindItemTap" data-name="{{item}}">{{item}}</action-sheet-item>
+      </block>
+      <action-sheet-cancel class="cancel">取消</action-sheet-cancel>
+    </action-sheet>
+  </view>
+</view>
+<view class='blank'></view>

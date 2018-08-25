@@ -1,0 +1,230 @@
+.user{
+  margin: 0rpx 50rpx 0rpx;
+}
+
+.for-block{
+
+}
+
+.favorite{
+  height: 80rpx;
+  font-size: 35rpx;
+  line-height: 49rpx;
+  padding-top: 70rpx;
+  color: orangered;
+  text-align:center;
+  align-items:center;
+  justify-content: center;
+  opacity: 0.8;
+}
+
+.comments{
+  height: 300rpx;
+  display: flex;
+  flex-direction: row;
+  margin-top: 50rpx;
+  box-shadow: 1rpx 1rpx 1rpx 1rpx rgba(177, 176, 176, 0.103);
+  background: white
+}
+
+.poster{
+  width: 35%;
+  height: 300rpx;
+}
+
+.comment{
+  height: 300rpx;
+  display: flex;
+  flex-direction: column;
+  margin: 0rpx 10rpx 0rpx 25rpx;
+}
+
+.film-name{
+  padding-top: 50rpx;
+  font-size: 35rpx;
+  line-height: 49rpx;
+  font-weight: 800
+}
+
+.comment-contant{
+  width: 350rpx;
+  height:80rpx;
+  padding-top: 10rpx;
+  font-size: 30rpx;
+  line-height: 42rpx;
+  text-overflow:ellipsis;
+  overflow:hidden;
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp: 2; 
+}
+
+.audio{
+  width: 350rpx;
+  height:80rpx;
+  padding-top: 10rpx;
+}
+
+.playButton{
+  height: 70rpx;
+  display: flex;
+  flex-direction: row;
+  border-radius: 5rpx;
+  background: white;
+  border: 2rpx solid rgba(161, 160, 160, 0.171);
+  background: rgba(211, 209, 198, 0.425)
+}
+.button-icon{
+  padding-left: 25rpx;
+  padding-top: 15rpx;
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.button-text{
+  font-size: 35rpx;
+  line-height: 49rpx;
+  padding-left: 8rpx;
+  padding-top: 16rpx;
+}
+.userInfo{
+  display: flex;
+  flex-direction: row;
+  padding-top: 20rpx;
+}
+
+.avatar{
+  height: 60rpx;
+  width: 60rpx;
+  border-radius: 50%;
+}
+
+.username{
+  padding-top: 10rpx;
+  padding-left: 35rpx;
+  font-size: 30rpx;
+  line-height: 42rpx;
+}
+
+.bottom-button{
+  position: fixed;
+  bottom: 0;
+  width: 750rpx;
+  height: 100rpx;
+  background: white
+}
+
+.home-text{
+  padding-top: 25rpx;
+  text-align:center;
+  align-items:center;
+  justify-content: center;
+  font-size: 35rpx;
+  line-height: 49rpx;
+}
+
+.devline{
+  position: fixed;
+  width: 100%;
+  height: 2rpx;
+  bottom: 105rpx;
+  background: rgba(117, 117, 117, 0.103);
+  opacity: 0.2
+}
+
+.unlogin-card {
+  display: flex;
+  align-items: center;
+  margin: 50rpx 27rpx 0;
+  height: 200rpx;
+  background: #FFFFFF;
+  box-shadow: 0 2rpx 13rpx 5rpx rgba(0, 0, 0, 0.02);
+  border-radius: 13rpx;
+}
+
+.unlogin-head {
+  flex-shrink: 0;
+  margin-left: 53rpx;
+  height: 100rpx;
+  width: 100rpx;
+  background: #F5E069;
+  border-radius: 50%;
+}
+
+.unlogin-info {
+  flex: 1;
+  margin-left: 31rpx;
+}
+
+.unlogin-text {
+  line-height: 48rpx;
+  font-size: 34rpx;
+  color: rgba(29, 29, 38, 0.8);
+  font-weight: bold;
+}
+
+.unlogin-tips {
+  margin-top: 6rpx;
+  line-height: 33rpx;
+  font-size: 24rpx;
+  color: #8B8B8B;
+}
+
+.unlogin-btn {
+  margin: 34rpx auto 0;
+  width: 250rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  background: #F5E069;
+  border-radius: 10rpx;
+  font-size: 30rpx;
+  text-align: center;
+  color: #34373D;
+  font-weight: bold;
+}
+
+.blank{
+  height: 120rpx;
+}
+
+.select_box{
+  width: 80%;
+  margin: 30rpx auto;
+  position: relative;
+}
+.select{
+  width: 100%;
+  height: 70rpx;
+  border-radius: 8rpx;
+  display: flex;
+  text-align:center;
+  align-items:center;
+  justify-content: center;
+  color: orangered;
+  opacity: 0.8
+}
+.select_text{
+  font-size: 30rpx;
+  flex: 1;
+}
+
+.option_box{
+  position: absolute;
+  top: 70rpx;
+  width: 100%;
+  height: 0;
+  overflow-y: auto;
+  border-top: 0;
+
+  text-align:center;
+  align-items:center;
+  justify-content: center;
+}
+.option{
+  display: block;
+  line-height: 40rpx;
+  font-size: 30rpx;
+  border-bottom: 1px solid #efefef;
+  background: #fff;
+  padding: 10rpx;
+}

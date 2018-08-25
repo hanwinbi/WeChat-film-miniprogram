@@ -1,0 +1,13 @@
+<view class='pop'>
+  <view class='box' wx:for-items='{{filmList}}' wx:for-index='idx' wx:key='filmList'>
+    <view class='comments' bindtap='tofilmDetail' data-item='{{item.id}}'>
+      <image class='poster' src='{{item.image}}'></image>
+      <view class='comment'>
+        <view class='film-name'>{{item.title}}</view>
+        <view class='classify'>{{item.category}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class='bottom'></view>

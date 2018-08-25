@@ -1,0 +1,18 @@
+<image class='poster' src='{{poster}}'></image>
+<view class='commentDetail'>
+  <view class='filmname'>{{title}}</view>
+
+  <textarea class='comment' placeholder='请输入你的影评内容...' auto-focus='true' confirm-type='done' maxlength='-1' bindinput='onInput' wx:if='{{inputType==0}}'></textarea>
+
+  <view class='tapbutton' wx:else>
+    <view class='button' bindtap='onRecord'>
+      <image class='button-icon' src='/images/record.png'></image>
+      <view class='button-text' wx:if='{{recordState==0}}'>开始录音</view>
+      <view class='button-text' wx:if='{{recordState==1}}'>结束录音</view>
+    </view>
+  </view>
+</view>
+
+<view class='bottom-button' bindtap='toPreComm'>
+  <view class='finish-text'>完成</view>
+</view>

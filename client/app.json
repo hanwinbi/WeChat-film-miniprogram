@@ -1,0 +1,20 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/user/user",
+    "pages/popular/popular",
+    "pages/filmDetail/filmDetail",
+    "pages/commentDetail/commentDetail",
+    "pages/comments/comments",
+    "pages/addComment/addComment",
+    "pages/PreviewComm/PreviewComm"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "black",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "Wafer Quick Start",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
+  }
+}

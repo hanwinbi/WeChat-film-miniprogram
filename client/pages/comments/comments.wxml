@@ -1,0 +1,19 @@
+<view class='commentlist' wx:for-items='{{comments}}' wx:key='comments'>
+  <view class='comment' bindtap='toCommentDetail' data-item='{{item}}'>
+    <view class='userInfo'>
+      <image class='avatar' src='{{item.avatar}}'></image>
+      <view class='username'>{{item.username}}</view>
+    </view>
+    <view class='commentContant' wx:if='{{item.commenttype==0}}'>{{item.comment}}</view>
+    <view class='playButton'wx:else>
+      <image class='button-icon' src='/images/play.png'></image>
+      <view class='button-text'>音频</view>
+    </view>
+  </view>
+</view>
+
+<view class='devline'></view>
+
+<view class='bottom-button' bindtap='toHome'>
+  <view class='home-text'>回到首页</view>
+</view>

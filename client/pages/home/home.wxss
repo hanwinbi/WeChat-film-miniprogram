@@ -1,0 +1,84 @@
+.home{
+  margin: 35rpx 100rpx ;
+  height: 750rpx;
+}
+
+.poster{
+  width: 550rpx;
+  height: 750rpx;
+}
+
+.film-name{
+  font-size: 45rpx;
+  line-height: 49rpx;
+  text-align:center;
+  align-items:center;
+  justify-content: center;
+}
+
+.shareInfo{
+  padding-top: 50rpx;
+  display: flex;
+  flex-direction: row;
+  text-align:center;
+  align-items:center;
+  justify-content: center;
+}
+
+.avatar{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+}
+
+.share-text{
+  padding-left: 10rpx;
+  font-size: 35rpx;
+  line-height: 49rpx;
+  font-weight: 400;
+}
+
+.devline{
+  position: fixed;
+  width: 100%;
+  height: 2rpx;
+  bottom: 105rpx;
+  background: rgba(128, 126, 126, 0.103);
+  opacity: 0.2
+}
+
+.button{
+  position: fixed;
+  bottom: 0;
+  width: 750rpx;
+  display: flex;
+  flex-direction: row;
+  height: 100rpx;
+  background: white
+}
+
+.button-left{
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+}
+
+.pop-icon{
+  padding-left: 100rpx;
+  padding-top: 25rpx;
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.pop-text{
+  font-size: 35rpx;
+  line-height: 49rpx;
+  padding-left: 8rpx;
+  padding-top: 30rpx;
+}
+
+.button-right{  
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+}

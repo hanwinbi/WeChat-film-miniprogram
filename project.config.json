@@ -1,20 +1,13 @@
 {
-	"description": "项目配置文件。",
-	"packOptions": {
-		"ignore": []
-	},
+	"client": "./client",
+	"svr": "./server",
+	"miniprogramRoot": "./client",
+	"qcloudRoot": "./server",
 	"setting": {
-		"urlCheck": false,
-		"es6": true,
-		"postcss": true,
-		"minified": true,
 		"newFeature": true
 	},
-	"compileType": "miniprogram",
-	"libVersion": "2.2.0",
-	"appid": "wxc5155f939922f354",
-	"projectname": "MiniProgram",
-	"isGameTourist": false,
+	"appid": "wx8d91d8d9f112f184",
+	"projectname": "film-test",
 	"condition": {
 		"search": {
 			"current": -1,
@@ -29,16 +22,28 @@
 			"list": []
 		},
 		"game": {
-			"currentL": -1,
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 1,
 			"list": [
 				{
-					"id": -1,
-					"name": "second page",
-					"pathName": "pages/detail/detail"
+					"id": 0,
+					"name": "filmList",
+					"pathName": "pages/popular/popular",
+					"query": ""
+				},
+				{
+					"id": 1,
+					"name": "user",
+					"pathName": "pages/user/user",
+					"query": ""
+				},
+				{
+					"id": 2,
+					"name": "record",
+					"pathName": "pages/PreviewComm/PreviewComm",
+					"query": ""
 				}
 			]
 		}

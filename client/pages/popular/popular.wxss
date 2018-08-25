@@ -1,0 +1,41 @@
+.pop{
+  margin: 0rpx 50rpx 0rpx;
+}
+
+.comments{
+  height: 300rpx;
+  display: flex;
+  flex-direction: row;
+  margin-top: 50rpx;
+  box-shadow: 1rpx 1rpx 1rpx 1rpx rgba(177, 176, 176, 0.103);
+  background: white
+}
+
+.poster{
+  width: 35%;
+  height: 300rpx;
+}
+
+.comment{
+  height: 300rpx;
+  display: flex;
+  flex-direction: column;
+  margin: 0rpx 10rpx 0rpx 25rpx;
+}
+
+.film-name{
+  padding-top: 70rpx;
+  font-size: 38rpx;
+  line-height: 50rpx;
+  font-weight: 800
+}
+
+.classify{
+  padding-top: 50rpx;
+  font-size: 30rpx;
+  line-height: 42rpx;
+}
+
+.bottom{
+  height: 50rpx;
+}
