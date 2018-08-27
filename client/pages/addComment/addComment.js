@@ -80,10 +80,7 @@ Page({
           tempFilePath: res.tempFilePath
         })
         console.log('停止录音', res.tempFilePath)
-        const {
-          tempFilePath
-        } = res
-        console.log('录音stop')
+        const {tempFilePath} = res
       })
       this.changeRecordState()
     }

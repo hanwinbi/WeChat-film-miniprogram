@@ -11,7 +11,7 @@
     <view class='comma'>“</view>
     <view class='commentText' wx:if='{{commenttype==0}}'>{{comment}}</view>
     <view class='playButton' bindtap='playAudio' wx:else>
-      <image class='button-icon' src='/images/play.png'></image>
+      <image class='button-icon' src='/images/play.png' bindtap='playAudio'></image>
       <view class='button-text'>点击试听</view>
     </view>
   </view>
@@ -22,10 +22,15 @@
       <view class='button-text'>收藏评论</view>
     </view>
 
-    <view class='button' bindtap='actionSheetTap'>
+    <view class='button' bindtap='actionSheetTap' wx:if='{{commented==0}}'>
       <image class='button-icon' src='/images/write.png'></image>
       <view class='button-text'>书写影评</view>
     </view>
+    <view class='button' bindtap='deleteComment' wx:else>
+      <image class='button-icon' src='/images/write.png'></image>
+      <view class='button-text'>删除影评</view>
+    </view>
+
     <action-sheet hidden="{{actionSheetHidden}}" bindchange="actionSheetChange">
       <block wx:for-items="{{actionSheetItems}}" wx:key='unique'>
         <action-sheet-item class="item" bindtap="bindItemTap" data-name="{{item}}">{{item}}</action-sheet-item>

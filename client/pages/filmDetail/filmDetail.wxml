@@ -8,10 +8,16 @@
       <view class='button-text'>查看影评</view>
     </view>
 
-    <view class='button' bindtap='actionSheetTap'>
+    <view class='button' bindtap='actionSheetTap' wx:if='{{commented==0}}'>
       <image class='button-icon' src='/images/comment.png' id='{{id}}'></image>
       <view class='button-text'>添加影评</view>
     </view>
+    
+    <view class='button' bindtap='toCommentDetail' wx:else>
+      <image class='button-icon' src='/images/comment.png' id='{{id}}'></image>
+      <view class='button-text'>影评详情</view>
+    </view>
+
     <action-sheet hidden="{{actionSheetHidden}}" bindchange="actionSheetChange">
       <block wx:for-items="{{actionSheetItems}}" wx:key='unique'>
         <action-sheet-item class="item" bindtap="bindItemTap" data-name="{{item}}">{{item}}</action-sheet-item>

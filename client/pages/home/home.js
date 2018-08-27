@@ -23,6 +23,7 @@ Page({
     app.checkSession({
       success: () => {
         this.setData({
+          
           loginState: app.data.loginState
         })
       }
@@ -69,7 +70,7 @@ Page({
             length: result.data.data.length
           })
           wx.setStorage({
-            key: 'wx8d91d8d9f112f184',
+            key: 'allComments',
             data: this.data.commentList,
           })
           this.randomFilm(0, this.data.length - 1)
@@ -96,7 +97,6 @@ Page({
     let c = m - n + 1;
     let num = Math.floor(Math.random() * c + n);
     let film = this.data.commentList[num]
-    console.log(film)
     this.setData({
       poster: film.poster,
       title: film.moviename,

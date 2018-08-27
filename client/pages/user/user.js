@@ -56,6 +56,9 @@ Page({
   },
   //获取收藏的影评
   getFavorite(){
+    wx.showLoading({
+      title: '载入中...',
+    })
     qcloud.request({
       url: config.service.favoriteList,
       login: true,
@@ -104,20 +107,17 @@ Page({
       show: !this.data.show
     });
     if(!this.data.index){
-      wx.showLoading({
-        title: '载入中...',
-      })
       this.getFavorite()
     }else{
-      wx.showLoading({
-        title: '载入中...',
-      })
       this.getMyComments()
     }
   },
   getMyComments(){
+    wx.showLoading({
+      title: '加载中...',
+    })
       wx.getStorage({
-        key: 'favoriteInfomation123',
+        key: 'allComments',
         success: result => {
           let length = result.data.length
           let res = result.data
@@ -157,8 +157,9 @@ Page({
     let avatar = event.currentTarget.dataset.item.avatar
     let comment = event.currentTarget.dataset.item.comment
     let movieid = event.currentTarget.dataset.item.movieid
+    let commenttype = event.currentTarget.dataset.item.commenttype
     wx.navigateTo({
-      url: '/pages/commentDetail/commentDetail?data=' + [userid, username, avatar, movieid, comment],
+      url: '/pages/commentDetail/commentDetail?data=' + [userid, username, avatar, movieid, comment,commenttype],
     })
   }
 })

@@ -44,5 +44,7 @@ router.post('/favorite',validationMiddleware,controllers.favorite.add)
 router.post('/comments',validationMiddleware, controllers.comments.add)
 //获取所有影评
 router.get('/comments',controllers.comments.allcomments)
+//删除影评
+router.put('/comments',validationMiddleware,controllers.comments.del)
 
 module.exports = router

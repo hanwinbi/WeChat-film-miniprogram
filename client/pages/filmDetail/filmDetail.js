@@ -9,11 +9,22 @@ Page({
     title: '',
     description: '',
     userInfo: null,
+    commented: 0,
+    commentDetail: []
   },
   onLoad: function(options) {
+    app.checkSession({
+      success: ({ userInfo }) => {
+        this.setData({
+          userInfo,
+        })
+      },
+    })
     this.setData({
       id: options.id,
     })
+
+    this.commented()
     this.setFilmDetail()
   },
   //设置电影详情，从保存的本地数据获取
@@ -29,7 +40,6 @@ Page({
   seekFilm(res) {
     let i = this.data.id - 1
     let film = res[i]
-    console.log(film)
     this.setData({
       poster: film.image,
       title: film.title,
@@ -38,13 +48,8 @@ Page({
   },
   //添加影评时，先判读是否登录，未登录先跳转登录
   actionSheetTap: function(e) {
-    app.checkSession({
-      success: ({ userInfo }) => {
-        this.setData({
-          userInfo,
-          actionSheetHidden: !this.data.actionSheetHidden
-        })
-      },
+    this.setData({
+      actionSheetHidden: !this.data.actionSheetHidden
     })
     if(!this.data.userInfo){
         wx.showLoading({
@@ -81,4 +86,48 @@ Page({
       url: '/pages/comments/comments?id=' + id,
     })
   },
+  //检查是否评论过
+  commented(){
+    wx.getStorage({
+      key: 'allComments',
+      success: result => {
+        let length = result.data.length
+        let res = result.data
+        let favorite = []
+        let commentDetail = []
+        if (this.data.userInfo.openId != null){
+          for (let i = 0; i < length; i += 1) {
+          if (res[i].userid == this.data.userInfo.openId && res[i].movieid == this.data.id) {
+            commentDetail.push({
+              userid: res[i].userid,
+              username: res[i].username,
+              avatar: res[i].avatar,
+              movieid: res[i].movieid,
+              comment: res[i].comment,
+              commenttype: res[i].commenttype
+            })
+            this.setData({
+              commented: 1,
+              commentDetail: commentDetail
+            })
+          }
+        }
+        } 
+      },
+    })
+  },
+  toCommentDetail() {
+    let Detail = this.data.commentDetail[0]
+    console.log(Detail)
+    let userid = Detail.userid
+    let username = Detail.username
+    let avatar = Detail.avatar
+    let comment = Detail.comment
+    let movieid = Detail.movieid
+    let commenttype = Detail.commenttype
+    console.log(userid, username, avatar, comment, movieid)
+    wx.navigateTo({
+      url: '/pages/commentDetail/commentDetail?data=' + [userid, username, avatar, movieid, comment, commenttype],
+    })
+  }
 })

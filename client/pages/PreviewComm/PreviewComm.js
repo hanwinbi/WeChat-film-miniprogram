@@ -1,16 +1,41 @@
 const qcloud = require('../../vendor/wafer2-client-sdk/index.js')
+const COS = require('../../lib/cos-wx-sdk-v5.js')
 const config = require('../../config.js')
 
 const app = getApp()
 const innerAudioContext = wx.createInnerAudioContext()
+
+const host = 'https://audiorecord-1257225145.cos.ap-shanghai.myqcloud.com/'
 
 const TypeMap = {
   '音频': 1,
   '文字': 0
 }
 
-Page({
+var cos = new COS({
+  getAuthorization: function (params, callback) {//获取签名 必填参数
+    var authorization = COS.getAuthorization({
+      SecretId: config.SecretId,
+      SecretKey: config.SecretKey,
+      Method: params.Method,
+      Key: params.Key
+    });
+    callback(authorization);
+  }
+});
 
+var requestCallback = function (err, data) {
+  console.log(err || data);
+  if (err && err.error) {
+    wx.showModal({ title: '返回错误', content: '请求失败：' + err.error.Message + '；状态码：' + err.statusCode, showCancel: false });
+  } else if (err) {
+    wx.showModal({ title: '请求出错', content: '请求出错：' + err + '；状态码：' + err.statusCode, showCancel: false });
+  } else {
+    wx.showToast({ title: '请求成功', icon: 'success', duration: 3000 });
+  }
+};
+
+Page({
   data: {
     commentValue: '',
     userInfo: null,
@@ -62,7 +87,10 @@ Page({
   },
   //发表影评
   sendComment(){
-    console.log(this.data.movieid, this.data.title, this.data.poster, this.data.commenttype, this.data.commentValue)
+    wx.showLoading({
+      title: '影评发布中...',
+    })
+    this.uploadAudio()
     qcloud.request({
       url: config.service.addComments,
       login: true,
@@ -75,14 +103,12 @@ Page({
         comment: this.data.commentValue,
       },
       success: result =>{
-        wx.showLoading({
-          title: '影评发布成功...',
-        })
+        wx.hideLoading()
         setTimeout(()=>{
           wx.navigateTo({
             url: '/pages/comments/comments?id=' + this.data.movieid,
           })
-        },2000)
+        },1000)
       },  
       fail: () =>{
         wx.showLoading({
@@ -106,5 +132,28 @@ Page({
       console.log(res.errMsg)
       console.log(res.errCode)
     })
+  },
+  uploadAudio(){
+    if(this.data.commenttype == 1)
+    {
+      let filePath = this.data.commentValue
+      let filename = filePath.substr(filePath.lastIndexOf('/') + 1);
+      this.setData({
+        commentValue: host + filename
+      })
+      console.log('文件路径',filePath,filename)
+      cos.postObject({
+        Bucket: config.Bucket,
+        Region: config.Region,
+        Key: filename,
+        FilePath: filePath,
+        onProgress: function (info) {
+          console.log(JSON.stringify(info));
+        }
+      }, function (err, data) {
+        console.log(err || data);
+      })
+
+    }
   }
 })

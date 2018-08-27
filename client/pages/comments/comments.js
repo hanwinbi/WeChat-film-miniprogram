@@ -10,7 +10,6 @@ Page({
     this.setData({
       id: options.id
     })
-    console.log(this.data.id)
     this.setComments(options.id)
   },
   //获取影评列表

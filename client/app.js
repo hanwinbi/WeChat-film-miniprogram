@@ -12,7 +12,8 @@ App({
   },
 
   data: {
-    loginState: unLogin
+    loginState: unLogin,
+    userinfo: null,
   },
 
   login({ success, error }) {

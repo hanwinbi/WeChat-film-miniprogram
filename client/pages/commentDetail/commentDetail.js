@@ -2,6 +2,7 @@ const qcloud = require('../../vendor/wafer2-client-sdk/index.js')
 const config = require('../../config.js')
 
 const app = getApp()
+const innerAudioContext = wx.createInnerAudioContext()
 
 Page({
   data: {
@@ -14,9 +15,18 @@ Page({
     comment: '',
     poster: '',
     title: '',
-    commenttype: 0
+    commenttype: 0,
+    userInfo: null,
+    commented: 0,
   },
   onLoad: function(options){
+    app.checkSession({
+      success: ({ userInfo }) => {
+        this.setData({
+          userInfo,
+        })
+      },
+    })
     let dataArr = options.data.split(',')  
     let userid = dataArr[0]
     let username = dataArr[1]
@@ -24,8 +34,12 @@ Page({
     let movieid = dataArr[3]
     let comment = dataArr[4]
     let commenttype = dataArr[5]
-
-    console.log(dataArr)
+    if(this.data.userInfo.openId == userid)
+    {
+      this.setData({
+        commented: 1
+      })
+    }
 
     this.setData({
       userid: userid,
@@ -39,6 +53,10 @@ Page({
   },
   //设置影评信息
   setComment() {
+    if(this.data.commenttype == 1)
+    {
+      this.getAudio()
+    }
     wx.getStorage({
       key: 'filmListKey',
       success: res => {
@@ -50,6 +68,30 @@ Page({
         })
       },
     })
+  },
+  getAudio(){
+    wx.downloadFile({
+      url: this.data.comment,
+      success: res => {
+        if (res.statusCode === 200) {
+          this.setData({
+            comment: res.tempFilePath
+          })
+        }
+      }
+    })
+  },
+  playAudio(){
+      innerAudioContext.autoplay = true
+      innerAudioContext.src = this.data.comment,
+        console.log(this.data.comment)
+      innerAudioContext.onPlay(() => {
+        console.log('开始播放')
+      })
+      innerAudioContext.onError((res) => {
+        console.log(res.errMsg)
+        console.log(res.errCode)
+      })
   },
   //actionSheet
   actionSheetTap: function (e) {
@@ -74,20 +116,72 @@ Page({
     console.log('tap' + choice)
   },
   addFavorite(){
-    qcloud.request({
-      url: config.service.addToFavorite,
-      login: true,
-      method: 'POST',
-      data:{
-        movieid: this.data.movieid,
-        commentuserid: this.data.userid
-      },
+    wx.getStorage({
+      key: 'favoriteInfomation123',
       success: result => {
-        console.log('插入数据成功')
+        let length = result.data.length
+        let res = result.data
+        console.log(res)
+        for(let i = 0; i < length; i +=1)
+        {
+          if(res[i].movieid == this.data.movieid && res[i].userid == this.data.userid){
+            wx.showToast({
+              title: '已收藏',
+            })
+            setTimeout(function(){
+              wx.hideLoading()
+            },1500)
+            break;
+          }
+          else{
+            wx.showLoading({
+              title: '收藏中...',
+            })
+            qcloud.request({
+              url: config.service.addToFavorite,
+              login: true,
+              method: 'POST',
+              data: {
+                movieid: this.data.movieid,
+                commentuserid: this.data.userid
+              },
+              success: result => {
+                wx.hideLoading()
+                console.log(result.data)
+                console.log('插入数据成功')
+              },
+              fail: () => {
+                wx.hideLoading()
+                console.log('插入数据失败')
+              }
+            })
+          }
+        }
       },
-      fail: () => {
-        console.log('插入数据失败')
-      }
     })
   },
+  deleteComment(){
+    wx.showLoading({
+      title: '删除影评中...',
+    })
+    qcloud.request({
+      url: config.service.delComment,
+      login: true,
+      method: 'PUT',
+      data:{
+        movieid: this.data.movieid,
+      },
+      success: result => {
+        console.log('success')
+        wx.hideLoading()
+        wx.navigateTo({
+          url: '/pages/comments/comments?id=' + this.data.movieid,
+        })
+      },
+      fail: () =>{
+        wx.hideLoading()
+        console.log('fail')
+      }
+    })
+  }
 })

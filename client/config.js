@@ -7,6 +7,10 @@ var host = 'https://fonqkbql.qcloud.la';
 
 var config = {
 
+  Bucket: 'audiorecord-1257225145',//replace with yours
+  Region: 'ap-shanghai',//replace with yours
+  SecretId: 'AKIDhghilhAC40oR3enTjtBIO1Wpz0pSrZ5P',//replace with yours
+  SecretKey: 'T1FKXQC5siYEEFDAlCpEhCkz6FLm9LXY',//replace with yours
   // 下面的地址配合云端 Demo 工作
   service: {
     host,
@@ -36,6 +40,8 @@ var config = {
     addComments: `${host}/weapp/comments`,
 
     allComments: `${host}/weapp/comments`,
+
+    delComment: `${host}/weapp/comments`,
   }
 };
 
