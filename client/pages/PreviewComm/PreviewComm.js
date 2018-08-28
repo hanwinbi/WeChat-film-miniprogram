@@ -133,6 +133,7 @@ Page({
       console.log(res.errCode)
     })
   },
+  //上传音频文件到存储桶
   uploadAudio(){
     if(this.data.commenttype == 1)
     {
@@ -141,7 +142,7 @@ Page({
       this.setData({
         commentValue: host + filename
       })
-      console.log('文件路径',filePath,filename)
+      console.log('文件路径',this.data.commentValue)
       cos.postObject({
         Bucket: config.Bucket,
         Region: config.Region,

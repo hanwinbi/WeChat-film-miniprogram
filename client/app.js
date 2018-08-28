@@ -21,6 +21,7 @@ App({
       success: res => {
           this.data.loginState = isLogin
           this.doQcloudLogin({ success, error })
+        console.log(this.data.loginState)
       }
     })
   },
@@ -82,7 +83,7 @@ App({
         this.getUserInfo({
           success: res => {
             userInfo = res.userInfo
-
+            this.data.loginState = 1
             success && success({
               userInfo
             })

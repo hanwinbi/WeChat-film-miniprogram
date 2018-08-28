@@ -20,8 +20,8 @@ Page({
     app.checkSession({
       success: ({ userInfo }) => {
         this.setData({
-          userInfo,
-          loginState: app.data.loginState
+          userInfo: userInfo,
+          loginState: 1
         })
         this.getFavorite()
         wx.getStorage({
@@ -42,7 +42,7 @@ Page({
       success: ({ userInfo }) => {
         this.setData({
           userInfo,
-          loginState: app.data.loginState
+          loginState: 1
         })
         this.getFavorite()
         console.log(this.data.userInfo)
@@ -122,13 +122,11 @@ Page({
           let length = result.data.length
           let res = result.data
           let favorite = []
-          console.log(res[0])
-          console.log(this.data.userInfo.openId)
           for(let i = 0; i < length; i +=1){
             if(res[i].userid == this.data.userInfo.openId){
               favorite.push({
                 movieid: res[i].movieid,
-                userid: res[i].commentuserid,
+                userid: res[i].userid,
                 poster: res[i].poster,
                 title: res[i].moviename,
                 comment: res[i].comment,
@@ -141,6 +139,7 @@ Page({
           this.setData({
             favorites: favorite
           })
+          console.log(this.data.favorites)
           wx.hideLoading()
         },
       })

@@ -18,15 +18,9 @@ Page({
     commenttype: 0,
     userInfo: null,
     commented: 0,
+    isFavorite: 0
   },
   onLoad: function(options){
-    app.checkSession({
-      success: ({ userInfo }) => {
-        this.setData({
-          userInfo,
-        })
-      },
-    })
     let dataArr = options.data.split(',')  
     let userid = dataArr[0]
     let username = dataArr[1]
@@ -34,12 +28,6 @@ Page({
     let movieid = dataArr[3]
     let comment = dataArr[4]
     let commenttype = dataArr[5]
-    if(this.data.userInfo.openId == userid)
-    {
-      this.setData({
-        commented: 1
-      })
-    }
 
     this.setData({
       userid: userid,
@@ -49,6 +37,20 @@ Page({
       comment: comment,
       commenttype: commenttype
     })
+
+    app.checkSession({
+      success: ({ userInfo }) => {
+        this.setData({
+          userInfo,
+        })
+        if (this.data.userInfo.openId == this.data.userid) {
+          this.setData({
+            commented: 1
+          })
+        }
+      },
+    })
+
     this.setComment()
   },
   //设置影评信息
@@ -124,38 +126,40 @@ Page({
         console.log(res)
         for(let i = 0; i < length; i +=1)
         {
-          if(res[i].movieid == this.data.movieid && res[i].userid == this.data.userid){
+          if(res[i].movieid == this.data.movieid && res[i].commentuserid == this.data.userid){
             wx.showToast({
               title: '已收藏',
             })
             setTimeout(function(){
               wx.hideLoading()
             },1500)
-            break;
-          }
-          else{
-            wx.showLoading({
-              title: '收藏中...',
-            })
-            qcloud.request({
-              url: config.service.addToFavorite,
-              login: true,
-              method: 'POST',
-              data: {
-                movieid: this.data.movieid,
-                commentuserid: this.data.userid
-              },
-              success: result => {
-                wx.hideLoading()
-                console.log(result.data)
-                console.log('插入数据成功')
-              },
-              fail: () => {
-                wx.hideLoading()
-                console.log('插入数据失败')
-              }
+            this.setData({
+              isFavorite: 1
             })
           }
+        }
+        if (!this.data.isFavorite) {
+          wx.showLoading({
+            title: '收藏中...',
+          })
+          qcloud.request({
+            url: config.service.addToFavorite,
+            login: true,
+            method: 'POST',
+            data: {
+              movieid: this.data.movieid,
+              commentuserid: this.data.userid
+            },
+            success: result => {
+              wx.hideLoading()
+              console.log(result.data)
+              console.log('插入数据成功')
+            },
+            fail: () => {
+              wx.hideLoading()
+              console.log('插入数据失败')
+            }
+          })
         }
       },
     })

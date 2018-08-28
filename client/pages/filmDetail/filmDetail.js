@@ -13,19 +13,23 @@ Page({
     commentDetail: []
   },
   onLoad: function(options) {
-    app.checkSession({
-      success: ({ userInfo }) => {
-        this.setData({
-          userInfo,
-        })
-      },
-    })
     this.setData({
       id: options.id,
     })
-
-    this.commented()
     this.setFilmDetail()
+  },
+  onShow(){
+    if (app.data.loginState) {
+      app.checkSession({
+        success: ({ userInfo }) => {
+          this.setData({
+            userInfo,
+            loginState: app.data.loginState
+          })
+          this.commented()
+        },
+      })
+    }
   },
   //设置电影详情，从保存的本地数据获取
   setFilmDetail() {
@@ -62,7 +66,6 @@ Page({
          })
        },1500)
     }
-    console.log(this.data.userInfo)
   },
   actionSheetChange: function(e) {
     this.setData({
@@ -95,7 +98,7 @@ Page({
         let res = result.data
         let favorite = []
         let commentDetail = []
-        if (this.data.userInfo.openId != null){
+        if (app.data.loginState){
           for (let i = 0; i < length; i += 1) {
           if (res[i].userid == this.data.userInfo.openId && res[i].movieid == this.data.id) {
             commentDetail.push({

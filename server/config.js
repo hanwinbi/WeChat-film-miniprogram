@@ -25,21 +25,6 @@ const CONF = {
     char: 'utf8mb4'
   },
 
-  cos: {
-    /**
-     * 地区简称
-     * @查看 https://cloud.tencent.com/document/product/436/6224
-     */
-    
-    region: 'ap-shanghai',
-    // Bucket 名称
-    fileBucket: 'audiorecord',
-    // 文件夹
-    uploadFolder: '',
-
-    mimetypes: ['audio/x-aac', 'audio/mpeg', 'video/webm', 'audio/mpeg', 'audio/mp3', 'audio/m4a']
-  },
-
   // 微信登录态有效期
   wxLoginExpires: 7200,
   wxMessageToken: 'abcdefgh'
